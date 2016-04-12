@@ -1,5 +1,6 @@
 import urllib2
 import json
+import time
 from bs4 import BeautifulSoup
 
 #Wrapper for function names and args
