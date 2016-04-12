@@ -2,6 +2,22 @@ import urllib2
 import json
 from bs4 import BeautifulSoup
 
+#Wrapper for function names and args
+def names( f ):
+    def inner(*arg):
+        print f.func_name + ": " + str(arg)
+        return f(*arg)
+    return inner
+
+#Wrapper for function execution time
+def exectime( f ):
+    def inner(*arg):
+        start = time.time()
+        f(*arg)
+        end = time.time()
+        return end-start
+    return inner
+
 #Gets first paragraph from Wikipedia about the location
 def getWiki(location):
     '''
