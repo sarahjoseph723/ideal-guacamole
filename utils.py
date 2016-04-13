@@ -16,10 +16,12 @@ def exectime( f ):
         start = time.time()
         f(*arg)
         end = time.time()
-        return end-start
+        print "Time: " +str(end-start)
+        return f(*arg)
     return inner
-
 #Gets first paragraph from Wikipedia about the location
+@exectime
+@names
 def getWiki(location):
     '''
     This will return the title of an article that mostly closely matches your query.
@@ -60,7 +62,9 @@ def getWiki(location):
         return paragraphs[1]
     else:
         return paragraphs[0]
-    
+
+@exectime
+@names
 def coordinates(query):
     '''
     Gets the longitude and latitude for a location using bing maps
